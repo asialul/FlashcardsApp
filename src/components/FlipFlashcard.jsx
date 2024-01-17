@@ -58,18 +58,18 @@ const flashcardList = [
 const FlipFlashcard = () => {
 
     const [number, setNumber] = useState(0)
-    const [lang, setLang] = useState('nazwaENG')
+    const [lang, setLang] = useState('nazwaPL')
 
     const handleClick = () => {
         const num = Math.floor(Math.random() * flashcardList.length)
         setNumber(num)
     }
 
-    const handleFlip = (lang) => {
-        if (lang === 'nazwaENG') {
-            setLang('nazwaPL')
-        } else {
+    const handleFlip = () => {
+        if (lang === 'nazwaPL') {
             setLang('nazwaENG')
+        } else {
+            setLang('nazwaPL')
         }
 
     }
