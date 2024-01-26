@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/joy";
+import { Grid, Card } from "@mui/joy";
 import FlipFlashcard from "../components/FlipFlashcard";
 
 const Lesson = () => {
