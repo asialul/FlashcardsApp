@@ -25,10 +25,7 @@ const Login = () => {
       });
 
       if (response.ok) {
-        // Obsłuż pomyślne zalogowanie (przekierowanie, zapis tokena, etc.)
-        const token = await response.json(); // Zakładam, że serwer zwraca token
-
-        // Tu możesz zapisać token w lokalnym stanie aplikacji, ciasteczku, czy innym bezpiecznym miejscu
+        const token = await response.json();
         console.log("Zalogowano pomyślnie");
         navigate("/dashboard");
       } else {

@@ -12,9 +12,10 @@ import {
   Stats,
   AddFlashcard,
   AllFlashcards,
+  EditFlashcard,
   Admin,
 } from "./pages";
-import { loader as allFlashcardsLoader } from "./pages/AllFlashcards";
+//import { loader as allFlashcardsLoader } from "./pages/AllFlashcards";
 // import { loader as dashboardLoader } from './pages/DashboardLayout'";
 const router = createBrowserRouter([
   {
@@ -41,12 +42,10 @@ const router = createBrowserRouter([
             path: "lesson",
             element: <Lesson />,
           },
-
           {
             path: "add-flashcard",
             element: <AddFlashcard />,
           },
-
           {
             path: "stats",
             element: <Stats />,
@@ -54,9 +53,11 @@ const router = createBrowserRouter([
           {
             path: "all-flashcards",
             element: <AllFlashcards />,
-            loader: allFlashcardsLoader,
           },
-
+          {
+            path: "edit-flashcard",
+            element: <EditFlashcard />,
+          },
           {
             path: "profile",
             element: <Profile />,

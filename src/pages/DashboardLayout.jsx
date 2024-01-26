@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 
 const DashboardContext = createContext();
 const Dashboard = () => {
-  // temp
   const user = { name: "User" };
 
   const [showSidebar, setShowSidebar] = useState(false);

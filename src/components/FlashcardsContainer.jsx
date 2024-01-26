@@ -1,10 +1,7 @@
 import Flashcard from "./Flashcard";
 import Wrapper from "../assets/wrappers/FlashcardsContainer";
 
-import { useAllFlashcardsContext } from "../pages/AllFlashcards";
-
 const FlashcardsContainer = () => {
-  const { data } = useAllFlashcardsContext();
   const { flashcards } = data;
   if (flashcards.length === 0) {
     return <Wrapper>No flashcards available</Wrapper>;

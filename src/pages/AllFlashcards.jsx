@@ -1,60 +1,113 @@
-import React, { createContext, useContext, useState } from "react";
-import { FlashcardsContainer, SearchContainer } from "../components";
-import { toast } from "react-toastify";
-import customFetch from "../utils/customFetch";
-import { useLoaderData } from "react-router-dom";
-
-export const loader = async ({ request }) => {
-  try {
-    const { data } = await customFetch.get("/flaschcards");
-    return {
-      data,
-    };
-  } catch (error) {
-    toast.error(error?.response?.data?.msg);
-    return error;
-  }
-};
-
-const AllFlashcardsContext = createContext();
+import React, { useState, useEffect } from "react";
+//import { FormRowAll } from "../components";
+import Wrapper from "../assets/wrappers/DashboardFormPage";
+import { useNavigate } from "react-router-dom";
 
 const AllFlashcards = () => {
-  const { data } = useLoaderData();
   const [flashcards, setFlashcards] = useState([]);
-  //const [error, setError] = useState(null);
-  /*
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const isEditting = navigate.state === "editting";
+  const isDeletting = navigate.state === "deletting";
+
+  const handleEditClick = (flashcardId) => {
+    navigate(`/dashboard/edit-flashcard`);
+  };
+
+  const handleDeleteClick = async (flashcardId) => {
+    const shouldDelete = window.confirm("Czy chcesz usunąć fiszkę?");
+    if (!shouldDelete) {
+      return;
+    }
+    try {
+      const response = await fetch(
+        `http://localhost:3000/flashcards/${flashcardId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (response.ok) {
+        const updatedFlashcards = flashcards.filter(
+          (flashcard) => flashcard._id !== flashcardId
+        );
+        setFlashcards(updatedFlashcards);
+        window.alert("Fiszka została usunięta pomyślnie");
+      } else {
+        setError("Nie udało się usunąć fiszki");
+      }
+    } catch (error) {
+      console.error("Błąd podczas usuwania fiszki:", error);
+      setError("Wystąpił błąd serwera");
+    }
+  };
+
   useEffect(() => {
+    const fetchFlashcards = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/flashcards");
+
+        if (response.ok) {
+          const result = await response.json();
+          setFlashcards(result.info);
+        } else {
+          setError("Nie udało się pobrać fiszek");
+        }
+      } catch (error) {
+        console.error("Błąd podczas pobierania fiszek:", error);
+        setError("Wystąpił błąd serwera");
+      }
+    };
+
     fetchFlashcards();
   }, []);
 
-  const fetchFlashcards = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/flashcards", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setFlashcards(data.info);
-      } else {
-        setError("Błąd poboru danych");
-      }
-    } catch (error) {
-      console.error("Błąd podczas pobrania danych:", error);
-      setError("Błąd podczas pobrania danych");
-    }
-  };
-*/
   return (
-    <AllFlashcardsContext.Provider value={{}}>
-      <SearchContainer />
-      <FlashcardsContainer />
-    </AllFlashcardsContext.Provider>
+    <Wrapper>
+      <h4 className="form-title">Wszystkie fiszki</h4>
+      <table className="flashcards-list">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Słówko polskie</th>
+            <th>Słówko angielskie</th>
+            <th>Edytuj</th>
+            <th>Usuń</th>
+          </tr>
+        </thead>
+        <tbody>
+          {flashcards.map((flashcard) => (
+            <tr key={flashcard._id}>
+              <td>{flashcard._id}</td>
+              <td>{flashcard.nazwaPL}</td>
+              <td>{flashcard.nazwaENG}</td>
+              <td>
+                <button
+                  type="button"
+                  className="edit-btn btn-block form-btn"
+                  disabled={isEditting}
+                  onClick={() => handleEditClick(flashcard._id)}
+                >
+                  {isEditting ? "edytowanie..." : "Edytuj fiszkę"}
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="delete-btn btn-block form-btn"
+                  disabled={isDeletting}
+                  onClick={() => handleDeleteClick(flashcard._id)}
+                >
+                  {isDeletting ? "usuwanie..." : "Usuń fiszkę"}
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {error && <p className="error-message">{error}</p>}
+    </Wrapper>
   );
 };
-export const useAllFlashcardsContext = () => useContext(AllFlashcardsContext);
 
 export default AllFlashcards;

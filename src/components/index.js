@@ -9,3 +9,4 @@ export { default as FormRowSelect } from "./FormRowSelect";
 export { default as FlashcardsContainer } from "./FlashcardsContainer";
 export { default as Flashcard } from "./Flashcard";
 export { default as SearchContainer } from "./SearchContainer";
+export { default as FormRowAll } from "./FormRowAll";
