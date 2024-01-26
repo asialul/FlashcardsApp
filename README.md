@@ -6,7 +6,7 @@ A simple application to help you keep your flashcards all in one place, have fun
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Setup](#setup)
-* [Room for Improvement](#room-for-improvement)
+* [Future Improvements](#room-for-improvement)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 * [License](#license)
