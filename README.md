@@ -1,5 +1,5 @@
 # Flashcard App
-A simple application to help you keep your flashcards all in one place, have fun when you learn & track your language-learning progress. Created with Node.js, React frontend, Express and MongoDB backend.
+A simple application to help you keep your flashcards all in one place, have fun when you learn & track your language-learning progress. Created with **Node.js**, **React** frontend, **Express** and **MongoDB** backend.
 
 ## Table of Contents
 * [General Info](#general-information)
