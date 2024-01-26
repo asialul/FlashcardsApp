@@ -5,11 +5,11 @@ const DictionarySearch = ({ definitions }) => {
 
     return (
         <div className="box">
-            <h1>{word}</h1>
-            {/* <p>{meanings[0].partOfSpeech}</p> */}
+            <h4>{word}</h4>
+            {/*<p>{meanings[0].partOfSpeech}</p>*/}
             <div>
                 <h4>Meaning:</h4>
-             {/*   <p>{meanings[0].definitions[0].definition}</p> */}
+             {/*<p>{meanings[0].definitions[0].definition}</p>*/}
             </div>
         </div>
     )

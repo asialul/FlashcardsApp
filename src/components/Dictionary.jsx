@@ -8,8 +8,6 @@ const Dictionary = () => {
 
   const searchWord = (word) => {
 
-    //tu try-catch, bo inaczej sie rozwala gdy word = ''
-
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(resp => resp.json())
       .then(resp => setDefinitions(resp[0]))
@@ -22,7 +20,7 @@ const Dictionary = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    
     searchWord(word)
   }
 
@@ -31,10 +29,10 @@ const Dictionary = () => {
     <Card className='dictionaryCard'>
       <div className='search'>
         <form className='searchform' onSubmit={handleSubmit}>
-          <label htmlFor='searchtext'>Wyszukaj Słówko</label>
-          <input type='text' id='searchtext' value={word} onChange={(e) => setWord(e.target.value)}/>
-          <button type='submit'>Wyszukaj w słowniku</button>
-          <button onClick={clearSearch}>Wyczyść</button>
+          <label htmlFor='searchtext'><h4>Wyszukaj Słówko:</h4></label><br/>
+          <input type='text' className='form-input' id='searchtext' value={word} onChange={(e) => setWord(e.target.value)}/><br/>
+          <button type='submit' className='btn'>Wyszukaj w słowniku</button>
+          <button onClick={clearSearch} className='btn'>Wyczyść</button>
         </form>
       </div>
     { definitions && <DictionarySearch {...{ definitions }}/>}

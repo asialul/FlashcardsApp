@@ -4,17 +4,15 @@ import FlipFlashcard from "../components/FlipFlashcard";
 const Lesson = () => {
   return (
     <div className="boxLayout">
-      <Box className="box1">
+      <Grid className="box1">
         <Card>
           <FlipFlashcard />
         </Card>
-      </Box>
-      <Box className="box2">
-        
-      </Box>
-      <Box className="box3">
-       
-      </Box>
+      </Grid>
+      <Grid xs={6} className="box1">
+      </Grid>
+      <Grid className="box3">    
+      </Grid>
 
     </div>
   );

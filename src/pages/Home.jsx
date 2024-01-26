@@ -1,25 +1,21 @@
 import Chart from "../components/Chart";
 import Dictionary from "../components/Dictionary";
-import { Box } from "@mui/joy";
+import { Box, Grid } from "@mui/joy";
 import TextBox from "../components/TextBox";
 
 const Home = () => {
   return (
-    <div className="boxLayout">
-      <Box className="box1">
+    <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid xs={4} className="box2">
         <Dictionary />
-      </Box>
-      <Box className="box2">
-        <Chart/>
-      </Box>
-      <Box className="box3">
+     </Grid>
+      <Grid xs={6} className="box3">
         <TextBox/>
-      </Box>
-      <Box className="box4">
-
-      </Box>
-
-    </div>
+      </Grid>
+      <Grid xs={4} className="box4">
+        <Chart/>
+      </Grid>
+      </Grid>
     
   );
 };
