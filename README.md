@@ -13,7 +13,7 @@ A simple application to help you keep your flashcards all in one place, have fun
 
 
 ## General Information
--  This flashcard app is an attempt to create an all-in-one full-stack app that allows you to create, store and use your language-learning flashcards in several ways. After creating your profile you can create and store your flashcards, and use the random flashcard-flipping feature to test yourself and improve your knowledge. There is plenty of space for future enhancements like adding your own notes or tracking your stats.
+-  This flashcard app is an attempt to create an all-in-one full-stack app that allows the user to create, store and use their language-learning flashcards in several ways. After logging in to their profile, the user can create and store flashcards, and use a flashcard-flipping game to test and improve their knowledge. There is plenty of space for future enhancements like adding notes and stat-tracking features.
 
 ## Technologies
 - [Node.js](https://nodejs.org/en) - version 10.2.5
